@@ -29,6 +29,7 @@
 <section class="header-contact">
     <nav>
         <a href="index.html"><img src="Images/TTC (1) (2).jpg" alt="Company Logo"></a>
+         <button class="nav-toggle" onclick="toggleMenu()">☰</button>
         <div class="nav-links" id="navLinks">
             <ul>
                 <li><a href="index.html">HOME</a></li>
@@ -122,6 +123,16 @@ window.addEventListener("scroll", function () {
     }
 });
 
+</script>
+
+<script>
+function toggleMenu() {
+  const nav = document.getElementById("navLinks");
+  console.log(nav); // Check if element exists
+  console.log(nav.classList); // Check current classes
+  nav.classList.toggle("show");
+  console.log(nav.classList); // Verify class was toggled
+}
 </script>
 
 </body>

@@ -1017,14 +1017,28 @@ border: solid #004AAD;
     border-radius: 5px;
   }
 
-  /* ===== Hamburger Menu Styles ===== */
+/* ===== Hamburger Menu Styles ===== */
 .nav-toggle {
   display: none; /* Hidden by default */
 }
 
-  /* ===== Responsive Styles for Mobile Devices (Max 768px) ===== */
+/* ===== Responsive Styles for Mobile Devices (Max 768px) ===== */
 
+/* ===== Additional Mobile Spacing Fixes ===== */
 @media (max-width: 768px) {
+  
+  /* Ensure body starts at top with no gaps */
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Remove any container margins that might create space at top */
+  .header-container,
+  .main-container {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
 
   /* Contact Info - hidden on mobile */
   .contact-info {
@@ -1033,29 +1047,39 @@ border: solid #004AAD;
   }
 
   /* Navigation */
-    
   nav {
     flex-direction: column;
     align-items: flex-start;
-    height: auto;
     padding: 10px 20px;
-     position: static !important;
+    position: sticky; /* ✅ Changed to sticky to stay at top */
+    top: 0; /* ✅ Stick to top of viewport */
+    height: auto;
+    min-height: 60px; /* ✅ Set minimum height for consistent spacing */
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid lightgray;
+    z-index: 1000; /* ✅ Added high z-index to ensure nav stays on top */
+    margin: 0; /* ✅ Remove any margins */
   }
+
   .nav-links {
     display: none;
-    flex-direction: column;
     width: 100%;
+    flex-direction: column;
     background-color: white;
     padding: 10px 0;
     border-top: 1px solid lightgray;
+    position: relative; /* ✅ Added positioning context */
+    z-index: 1001; /* ✅ Higher z-index for nav links */
   }
 
-
-    .nav-links.show {
+  .nav-links.show {
     display: flex !important;
-    flex-direction: column; /* repeat to be safe */
   }
+
   .nav-links ul {
+    display: flex;
+    list-style: none;
     flex-direction: column;
     padding: 0;
     margin: 0;
@@ -1064,12 +1088,12 @@ border: solid #004AAD;
 
   .nav-links ul li {
     width: 100%;
-    text-align: left;
     padding: 10px 20px;
     border-bottom: 1px solid #eee;
+    background-color: white; /* ✅ Ensure background is solid */
   }
 
-    .nav-links ul li a {
+  .nav-links ul li a {
     padding: 10px 0;
     font-size: 16px;
   }
@@ -1082,22 +1106,30 @@ border: solid #004AAD;
     cursor: pointer;
     color: #004AAD;
     margin-left: auto;
+    z-index: 1002; /* ✅ Ensure hamburger button stays clickable */
+    position: relative;
   }
-
-
 
   /* Header text */
   .text-box {
     width: 95%;
+    padding-top: 300px; /* ✅ Increased to push content below sticky nav */
+    position: relative;
+    z-index: 1; /* ✅ Lower z-index so it stays behind navigation */
+    margin-top: 0;
   }
+
   .text-box h1 {
     font-size: 28px;
-    padding-top: 100px; 
+    padding-top: 20px;
+    margin-top: 0;
   }
+
   .text-box h2 {
     font-size: 16px;
     padding: 20px;
   }
+
   .hero-btn1, .hero-btn2 {
     display: block;
     width: 100%;
@@ -1158,22 +1190,17 @@ border: solid #004AAD;
 
 /* ===== Hamburger Menu Styles ===== */
 
-
 nav img {
   width: 120px;
   height: auto;
   margin-bottom: 10px;
 }
 
-
-
-
-
-
 /* About Section */
 
 @media (max-width: 768px) {
-.about-section-col {
+
+  .about-section-col {
     flex-direction: column;
     padding: 0;
     gap: 20px;
@@ -1252,6 +1279,90 @@ nav img {
 /*Responsive for Services Page*/
 
 @media (max-width: 768px) {
+ 
+ /* Ensure body starts at top with no gaps */
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Remove any container margins that might create space at top */
+  .header-container,
+  .main-container {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  /* Contact Info - hidden on mobile */
+  .contact-info {
+    display: none !important;
+    position: static !important; /* override fixed position */
+  }
+
+  /* Navigation */
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+    position: sticky; /* ✅ Changed to sticky to stay at top */
+    top: 0; /* ✅ Stick to top of viewport */
+    height: auto;
+    min-height: 60px; /* ✅ Set minimum height for consistent spacing */
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid lightgray;
+    z-index: 1000; /* ✅ Added high z-index to ensure nav stays on top */
+    margin: 0; /* ✅ Remove any margins */
+  }
+
+  .nav-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    background-color: white;
+    padding: 10px 0;
+    border-top: 1px solid lightgray;
+    position: relative; /* ✅ Added positioning context */
+    z-index: 1001; /* ✅ Higher z-index for nav links */
+  }
+
+  .nav-links.show {
+    display: flex !important;
+  }
+
+  .nav-links ul {
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .nav-links ul li {
+    width: 100%;
+    padding: 10px 20px;
+    border-bottom: 1px solid #eee;
+    background-color: white; /* ✅ Ensure background is solid */
+  }
+
+  .nav-links ul li a {
+    padding: 10px 0;
+    font-size: 16px;
+  }
+
+  .nav-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #004AAD;
+    margin-left: auto;
+    z-index: 1002; /* ✅ Ensure hamburger button stays clickable */
+    position: relative;
+  }
+
   .header-services {
     height: auto;
     background-attachment: scroll;
